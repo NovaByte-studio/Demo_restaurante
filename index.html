@@ -1494,6 +1494,38 @@ Meta Tags para WhatsApp/Redes Sociales -->
                     }
                 });
             });
+// Lightbox para imágenes
+            const lightboxModal = document.getElementById('lightboxModal');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            const clickableImages = document.querySelectorAll('.hero-image img, .burger-card img, .menu-item img');
+
+            clickableImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightboxModal.classList.add('active');
+                    lightboxImage.src = this.src;
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxModal.addEventListener('click', function(e) {
+                if (e.target === lightboxModal) {
+                    closeLightbox();
+                }
+            });
+
+            function closeLightbox() {
+                lightboxModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
         });
     </script>
 </body>
