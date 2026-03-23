@@ -226,3 +226,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Delicia las Bendiciones - Todas las funcionalidades activadas');
 });
+
+// ===== LIGHTBOX - PANTALLA COMPLETA AL CLICK =====
+const imageModal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+const modalClose = document.querySelector('.modal-close');
+
+// Abrir al hacer click en cualquier imagen de producto
+document.querySelectorAll('.product-image img, .season-image img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+        modalImage.src = img.src;
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // evita scroll de fondo
+    });
+});
+
+// Cerrar con el botón X
+modalClose.addEventListener('click', () => {
+    imageModal.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+// Cerrar al hacer click fuera de la imagen
+imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Cerrar con la tecla Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
