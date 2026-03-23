@@ -1061,3 +1061,7 @@ body {
     color: var(--amarillo-principal);
     transform: scale(1.2);
 }
+
+.product-overlay {
+    pointer-events: none;
+}
