@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.querySelector('.image-modal .modal-close');
     
     // Todas las imágenes de productos y hero
-    const allImages = document.querySelectorAll('.product-image img, .season-image img, .hero-image img');
+    const allImages = document.querySelectorAll('.product-image, .season-image, .hero-image');
     
     allImages.forEach(img => {
         img.addEventListener('click', (e) => {
             e.stopPropagation();
-            modalImage.src = img.src;
+            modalImage.src = img.querySelector('img').src;
             imageModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
